@@ -1,0 +1,221 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Gift",
+		"_postman_id": "6d02279e-b550-8ece-14bf-28fe7629bfb6",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST gifts/",
+			"request": {
+				"url": "localhost:8082/gifts/",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Macbook Pro 17 2020 [i9,16Gb,512Gb, RX 560]",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "point",
+							"value": "45000",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "stock",
+							"value": "150",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Macbook Pro Core I9 - 9850K Ram 16 Gb ddr4 2440mhz SSD 512 Gb Radeon RX 560 ",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"description": "",
+							"type": "file",
+							"src": "macbook13.png"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH gifts/:id",
+			"request": {
+				"url": "localhost:8082/gifts/26",
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Macbook Pro 16 2019 [i9,16Gb,512Gb, RX 560]",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "point",
+							"value": "45000",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "stock",
+							"value": "15",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "description",
+							"value": "Macbook Pro Core I9 - 9850K Ram 16 Gb ddr4 2440mhz SSD 512 Gb Radeon RX 560 ",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "image",
+							"description": "",
+							"type": "file",
+							"src": "samsung_note10_White.png"
+						},
+						{
+							"key": "status",
+							"value": "1",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE /gifts/:id",
+			"request": {
+				"url": "localhost:8082/gifts/49",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "POST /gifts/:id/redeem",
+			"request": {
+				"url": "localhost:8082/gifts/25/redeem",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"quantity\": 1\n}"
+				},
+				"description": "{\n\t\"quantity\": 2 \\\\ jumlah item yang ingin di redeem\n}"
+			},
+			"response": []
+		},
+		{
+			"name": "POST /gifts/:id/rating",
+			"request": {
+				"url": "localhost:8082/gifts/25/rating",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"redeem_id\": 27,\n\t\"score\": 5,\n\t\"review\": \"Barangnya bagus\"\n}"
+				},
+				"description": "{\n\t\"redeem_id\": 22, \\\\ harus melakukan redeem baru bisa melakukan review\n\t\"score\": 4, \\\\ score 1-5\n\t\"review\": \"Lumayan dapet laptop\" \\\\ optional dapat null\n}"
+			},
+			"response": []
+		},
+		{
+			"name": "GET /gifts/:id",
+			"request": {
+				"url": "localhost:8082/gifts/27",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "get 1 item"
+			},
+			"response": []
+		},
+		{
+			"name": "GET /gifts?page=INT&row=INT&stock=INT&name=VARCHAR&rating=DESC|ASC&create_at=DESC|ASC",
+			"request": {
+				"url": {
+					"raw": "localhost:8082/gifts?stock=150&name=mac&rating=DESC&create_at=DESC",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"gifts"
+					],
+					"query": [
+						{
+							"key": "stock",
+							"value": "150",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "name",
+							"value": "mac",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "rating",
+							"value": "DESC",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "create_at",
+							"value": "DESC",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "query\nstock=INT\nname= VARCHAR\nrating = ASC|DESC\ncreate_at = ASC|DESC\npage = INT \\\\ jumlah halaman\nrow = INT \\\\ jumlah data"
+			},
+			"response": []
+		}
+	]
+}
